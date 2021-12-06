@@ -10,18 +10,20 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+![image](./example.gif)
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+add `yg_indicator_button:` to your `pubspec.yaml` file.
+
+```
+dependencies:
+  flutter:
+    sdk: flutter
+  yg_indicator_button:
+```
 
 ## Usage
 
@@ -29,11 +31,17 @@ TODO: Include short and useful examples for package users. Add longer examples
 to `/example` folder. 
 
 ```dart
-const like = 'sample';
+YGIndicatorButton(
+		normalTitle: 'Create',
+		height: 50,
+		width: 200,
+		action: (closure) {
+		closure(YGIndicatorStatus.loading);
+		// fake API request
+		Future.delayed(const Duration(seconds: 2), () {
+			closure(YGIndicatorStatus.completed);
+		});
+		},
+	),
+);
 ```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
