@@ -91,10 +91,7 @@ class _YGIndicatorButtonState extends State<YGIndicatorButton> {
             ],
           ),
         );
-        break;
     }
-
-    return Container();
   }
 
   _buildActivityIndicator() {
