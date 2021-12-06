@@ -32,16 +32,15 @@ to `/example` folder.
 
 ```dart
 YGIndicatorButton(
-		normalTitle: 'Create',
-		height: 50,
-		width: 200,
-		action: (closure) {
-		closure(YGIndicatorStatus.loading);
-		// fake API request
-		Future.delayed(const Duration(seconds: 2), () {
-			closure(YGIndicatorStatus.completed);
-		});
-		},
-	),
-);
+    normalTitle: 'Create',
+    height: 50,
+    width: 200,
+    action: (closure) {
+        closure(YGIndicatorStatus.loading);
+        // fake API request
+	Future.delayed(const Duration(seconds: 2), () {
+	    closure(YGIndicatorStatus.completed);
+	});
+    },
+)
 ```
