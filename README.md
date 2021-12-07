@@ -12,7 +12,7 @@ and the Flutter guide for
 -->
 ## Features
 
-![image](./example.gif)
+![image](https://github.com/hhgz9527/yg_indicator_button/blob/main/example.gif?raw=true)
 
 ## Getting started
 
