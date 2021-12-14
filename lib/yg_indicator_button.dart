@@ -15,6 +15,10 @@ class YGIndicatorButton extends StatefulWidget {
   final String? completedTitle;
   final double? width;
   final double? height;
+  final Widget? normalWidget; // when use this, normalTitle will disable
+  final Widget? loadingWidget; // when use this, loadingTitle will disable
+  final Widget? completedWidget; // when use this, completedTitle will disable
+  final Color? backgroundColor;
   final Function(Function(YGIndicatorStatus result))? action;
 
   const YGIndicatorButton({
@@ -25,6 +29,10 @@ class YGIndicatorButton extends StatefulWidget {
     this.action,
     this.width,
     this.height,
+    this.backgroundColor,
+    this.normalWidget,
+    this.loadingWidget,
+    this.completedWidget,
   }) : super(key: key);
 
   @override
@@ -42,8 +50,8 @@ class _YGIndicatorButtonState extends State<YGIndicatorButton> {
           height: widget.height ?? 50,
           width: widget.width ?? double.infinity,
           child: CupertinoButton(
-            color: CupertinoColors.systemBlue,
-            child: Text(widget.normalTitle),
+            color: widget.backgroundColor ?? CupertinoColors.systemBlue,
+            child: widget.normalWidget ?? Text(widget.normalTitle),
             onPressed: () {
               if (widget.action != null) {
                 widget.action!(
@@ -63,14 +71,14 @@ class _YGIndicatorButtonState extends State<YGIndicatorButton> {
           width: widget.width ?? double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: CupertinoColors.systemBlue,
+            color: widget.backgroundColor ?? CupertinoColors.systemBlue,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _buildActivityIndicator(),
               Container(width: 15),
-              Text(widget.loadingTitle ?? 'Updating', style: const TextStyle(color: Colors.white)),
+              widget.loadingWidget ?? Text(widget.loadingTitle ?? 'Updating', style: const TextStyle(color: Colors.white)),
             ],
           ),
         );
@@ -87,7 +95,7 @@ class _YGIndicatorButtonState extends State<YGIndicatorButton> {
             children: [
               const Icon(Icons.done, color: Colors.white),
               Container(width: 15),
-              Text(widget.completedTitle ?? 'Succeeded', style: const TextStyle(color: Colors.white)),
+              widget.completedWidget ?? Text(widget.completedTitle ?? 'Succeeded', style: const TextStyle(color: Colors.white)),
             ],
           ),
         );
