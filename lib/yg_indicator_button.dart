@@ -19,6 +19,7 @@ class YGIndicatorButton extends StatefulWidget {
   final Widget? loadingWidget; // when use this, loadingTitle will disable
   final Widget? completedWidget; // when use this, completedTitle will disable
   final Color? backgroundColor;
+  final BorderRadius? borderRadius;
   final Function(Function(YGIndicatorStatus result))? action;
 
   const YGIndicatorButton({
@@ -33,6 +34,7 @@ class YGIndicatorButton extends StatefulWidget {
     this.normalWidget,
     this.loadingWidget,
     this.completedWidget,
+    this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -50,6 +52,7 @@ class _YGIndicatorButtonState extends State<YGIndicatorButton> {
           height: widget.height ?? 50,
           width: widget.width ?? double.infinity,
           child: CupertinoButton(
+            borderRadius: widget.borderRadius,
             color: widget.backgroundColor ?? CupertinoColors.systemBlue,
             child: widget.normalWidget ?? Text(widget.normalTitle),
             onPressed: () {
